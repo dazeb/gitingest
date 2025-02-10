@@ -23,7 +23,7 @@ class InvalidPatternError(ValueError):
 
 class AsyncTimeoutError(Exception):
     """
-    Raised when an async operation exceeds its timeout limit.
+    Exception raised when an async operation exceeds its timeout limit.
 
     This exception is used by the `async_timeout` decorator to signal that the wrapped
     asynchronous function has exceeded the specified time limit for execution.
@@ -38,7 +38,7 @@ class MaxFilesReachedError(Exception):
 
 
 class MaxFileSizeReachedError(Exception):
-    """Raised when the maximum file size is reached."""
+    """Exception raised when the maximum file size is reached."""
 
     def __init__(self, max_size: int):
         super().__init__(f"Maximum file size limit ({max_size/1024/1024:.1f}MB) reached.")
@@ -49,3 +49,10 @@ class AlreadyVisitedError(Exception):
 
     def __init__(self, path: str) -> None:
         super().__init__(f"Symlink target already visited: {path}")
+
+
+class InvalidNotebookError(Exception):
+    """Exception raised when a Jupyter notebook is invalid or cannot be processed."""
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)

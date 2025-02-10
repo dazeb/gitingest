@@ -20,7 +20,7 @@ FROM python:3.12-slim
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 
-# Install git
+# Install Git
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git curl\
     && rm -rf /var/lib/apt/lists/*
@@ -41,4 +41,4 @@ USER appuser
 
 EXPOSE 8000
 
-CMD ["python", "-m", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "-m", "uvicorn", "server.main:app", "--host", "0.0.0.0", "--port", "8000"]
